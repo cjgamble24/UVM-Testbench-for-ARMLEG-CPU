@@ -12,6 +12,7 @@ module ProgramCounter
 	always @(posedge CLOCK) begin
 		if(PCWire) begin
 			if (programCounter_in === 64'bx) begin
+				// Set the initial value of the program counter
 				programCounter_out  <= 0;
 			end	else begin
 				programCounter_out <= programCounter_in;

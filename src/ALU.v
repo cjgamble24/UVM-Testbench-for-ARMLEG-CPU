@@ -17,6 +17,7 @@ module ALU
 			4'b1100 : result = ~(A | B);
 		endcase
 
+		// Indicates if its zero or not. Used for control flow and just gives info about operations performed
 		if (result == 0) begin
 			zeroFlag = 1'b1;
 		end else begin

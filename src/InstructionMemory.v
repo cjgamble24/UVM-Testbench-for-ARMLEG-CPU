@@ -1,9 +1,11 @@
+// Outputs a 32 bit instruction based on the program counter 
 module InstructionMemory
 (
 	input [63:0] programCounter,
 	output reg [31:0] CPU_Instruction
 );
 
+	// 64, 8-bit-wide memory elements
 	reg [8:0] instructionMemoryData[63:0];
 
 	initial begin
@@ -21,6 +23,7 @@ module InstructionMemory
 		instructionMemoryData[7] = 'b01001011;
 
 		// ADD X12, X3, X4
+		// 10001011 00000100 00000000 01101100
 		instructionMemoryData[8] = 'b10001011;
 		instructionMemoryData[9] = 'b00000100;
 		instructionMemoryData[10] = 'b00000000;
@@ -105,10 +108,12 @@ module InstructionMemory
 		instructionMemoryData[59] = 8'hc1;		
 	end
 
+	// Triggers at program counter update
+	// Reads four bytes from the instruction memory 
 	always @(programCounter) begin
-		CPU_Instruction[8:0] = instructionMemoryData[programCounter+3];
+		CPU_Instruction[8:0] = instructionMemoryData[programCounter+3];		// MSB
 		CPU_Instruction[16:8] = instructionMemoryData[programCounter+2];
 		CPU_Instruction[24:16] = instructionMemoryData[programCounter+1];
-		CPU_Instruction[31:24] = instructionMemoryData[programCounter];
+		CPU_Instruction[31:24] = instructionMemoryData[programCounter]; 	// LSB
 	end
 endmodule

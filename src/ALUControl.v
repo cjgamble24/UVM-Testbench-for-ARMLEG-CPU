@@ -5,6 +5,7 @@ module ALUControl
 	output reg [3:0] ALUoperation
 );
 
+	// Selects operation based on "ALUop"
 	always @(*) case (ALUop)
 		2'b00 : ALUoperation = 4'b0010; // Jump instruction
 		2'b01 : ALUoperation = 4'b0111;
