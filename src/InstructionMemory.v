@@ -23,7 +23,21 @@ module InstructionMemory
 		instructionMemoryData[7] = 'b01001011;
 
 		// ADD X12, X3, X4
+		// Add is an r type instruction 
+		// 31-21 = opcode 
+		// 20-16 = Rm
+		// 15-10 = shift ammout 
+		// 9-5 = Rn
+		// 4-0 = Rd
+		// ADD 11 bit opcode 10001011000
 		// 10001011 00000100 00000000 01101100
+		// 10001011000 001000 00000 00011 01100
+		// 8B04006C
+		// 31-21 = 10001011000
+		// 20-16 = 001000
+		// 15-10 = 00000
+		// 9-5 = 00011
+		// 4-0 = 01100
 		instructionMemoryData[8] = 'b10001011;
 		instructionMemoryData[9] = 'b00000100;
 		instructionMemoryData[10] = 'b00000000;
